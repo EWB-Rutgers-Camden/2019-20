@@ -11,7 +11,7 @@ import RPi.GPIO as GPIO
 opt_level_to_maintain = 700
 base_level_to_maintain = 700
 weather_data = None
-enough_water_gathered = none
+enough_water_gathered = None
 shed_sqr_inch = 3456
 threshRain = None
 waterGainThresh = None
@@ -80,12 +80,12 @@ def runner():
     day = date.today()
     ss = set_sensors()
     weather_data = get_weather()
-    While True:
+    while True:
         water_level = ss.moisture_read()
-        if day != date.today() #New Day:
+        if day != date.today(): #New Day:
             weather_data = get_weather()
             day = date.today()
-       if evaluate_logic(weather_data,water_level):
-           GPIO.output(17, 1)
-       else:
-           GPIO.output(17, 0)
+        if evaluate_logic(weather_data,water_level):
+            GPIO.output(17, 1)
+        else:
+            GPIO.output(17, 0)
